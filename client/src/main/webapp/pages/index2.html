@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8"/>
+    <!-- If you delete this meta tag World War Z will become a reality -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- If you are using the CSS version, only link these 2 files, you may add app.css to use for your overrides if you like -->
+    <link rel="stylesheet" href="css/foundation.css">
+    <script src="js/vendor/modernizr.js"></script>
+</head>
+<body>
+<div class="row">
+    <div class="large-12 columns">
+        <h1>Welcome to Foundation</h1>
+    </div>
+</div>
+<form id="produktAuswahl" data-bind="with: produktAuswahl">
+    <div class="row">
+        <div class="small-8 columns">
+            <div class="row">
+                <div class="small-4 columns">
+                    <label class="right"
+                           data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt1')  != -1 }">Produkt
+                        1:</label>
+                </div>
+                <div class="small-8 columns">
+                    <input id="produkt1Nein" title="produkt1 ausgewählt" type="radio" name="produkt1Group"
+                           value="nein"
+                           data-bind="checked: produkt1"/><label for="produkt1Nein">Nein</label>
+                    <input id="produkt1Ja" title="produkt1 abgewählt" type="radio" name="produkt1Group"
+                           value="ja"
+                           data-bind="checked: produkt1"/><label for="produkt1Ja">Ja</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-8 columns">
+            <div class="row" data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt2')  != -1 }">
+                <div class="small-4 columns">
+                    <label form="produktAuswahl" class="right">Produkt 2:</label>
+                </div>
+                <div class="small-8 columns">
+                    <input title="produkt2 ausgewählt" type="radio" name="produkt2Group" value="nein"
+                           data-bind="checked: produkt2"/>Nein
+                    <input title="produkt2 abgewählt" type="radio" name="produkt2Group" value="ja"
+                           data-bind="checked: produkt2"/>Ja
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-8 columns">
+            <div class="row" data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt3')  != -1 }">
+                <div class="small-4 columns">
+                    <label form="produktAuswahl" class="right">Produkt 3:</label>
+                </div>
+                <div class="small-8 columns">
+                    <input title="produkt3 ausgewählt" type="radio" name="produkt3Group" value="nein"
+                           data-bind="checked: produkt3"/>Nein
+                    <input title="produkt3 abgewählt" type="radio" name="produkt3Group" value="ja"
+                           data-bind="checked: produkt3"/>Ja
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+<!--
+    <div data-bind="text: $parent.errorCode"></div>
+    <div class="warning" data-bind="text: $parent.msg, visible: $parent.error"></div>
+    <div class="small-2 columns">
+        <button class="button postfix" data-bind="click: $root.validate">Weiter</button>
+    </div>
+    -->
+</form>
+
+<!-- ${browser.bootstrap} -->
+<!-- body content here -->
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+</script>
+</body>
+</html>

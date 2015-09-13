@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- If you delete this meta tag World War Z will become a reality -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- If you are using the CSS version, only link these 2 files, you may add app.css to use for your overrides if you like -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/foundation.css">
+
+    <script src="js/vendor/modernizr.js"></script>
+    <style>
+        .warning {
+            color: red;
+        }
+    </style>
+</head>
+<body data-bind="route: flow().page">
+<!--
+<ul>
+    <li><a href="#/Page1">Page 1</a></li>
+    <li><a href="#/Page2">Page 2</a></li>
+</ul>
+-->
+<div data-bind="template: { name: flow().page}"></div>
+
+<script type="text/html" id="Page1">
+    <form id="produktAuswahl" data-bind="with: produktAuswahl">
+        <fieldset>
+            <legend>Wählen Sie die Produkte</legend>
+            <div class="row">
+                <div class="small-8 columns">
+                    <div class="row">
+                        <div class="small-4 columns">
+                            <label class="right"
+                                   data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt1')  != -1 }">Produkt
+                                1:</label>
+                        </div>
+                        <div class="small-8 columns">
+                            <input id="produkt1Nein" title="produkt1 ausgewählt" type="radio" name="produkt1Group"
+                                   value="nein"
+                                   data-bind="checked: produkt1"/><label for="produkt1Nein">Nein</label>
+                            <input id="produkt1Ja" title="produkt1 abgewählt" type="radio" name="produkt1Group"
+                                   value="ja"
+                                   data-bind="checked: produkt1"/><label for="produkt1Ja">Ja</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-8 columns">
+                    <div class="row" data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt2')  != -1 }">
+                        <div class="small-4 columns">
+                            <label form="produktAuswahl" class="right">Produkt 2:</label>
+                        </div>
+                        <div class="small-8 columns">
+                            <input id="produkt2Nein" title="produkt2 ausgewählt" type="radio" name="produkt2Group"
+                                   value="nein"
+                                   data-bind="checked: produkt2"/><label for="produkt2Nein">Nein</label>
+                            <input id="produkt2Ja" title="produkt2 abgewählt" type="radio" name="produkt2Group"
+                                   value="ja"
+                                   data-bind="checked: produkt2"/><label for="produkt2Ja">Ja</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-8 columns">
+                    <div class="row" data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt3')  != -1 }">
+                        <div class="small-4 columns">
+                            <label form="produktAuswahl" class="right">Produkt 3:</label>
+                        </div>
+                        <div class="small-8 columns">
+                            <input id="produkt3Nein" title="produkt3 ausgewählt" type="radio" name="produkt3Group"
+                                   value="nein"
+                                   data-bind="checked: produkt3"/><label for="produkt3Nein">Nein</label>
+                            <input id="produkt3Ja" title="produkt3 abgewählt" type="radio" name="produkt3Group"
+                                   value="ja"
+                                   data-bind="checked: produkt3"/><label for="produkt3Ja">Ja</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div data-bind="text: $parent.errorCode"></div>
+            <div class="warning" data-bind="text: $parent.msg, visible: $parent.error"></div>
+            <div class="small-2 columns">
+                <button data-bind="click: $root.validate">Weiter</button>
+            </div>
+        </fieldset>
+    </form>
+</script>
+
+<script type="text/html" id="Page2">
+    <form data-bind="with: kunde">
+        <fieldset>
+            <legend>Bitte ergänzen Sie folgende Angaben:</legend>
+            <div class="row">
+                <div class="small-8 columns">
+                    <div class="row" data-bind="css: { warning: $parent.bindingErrors().indexOf('beruf')  != -1 }">
+                        <div class="small-5 columns">
+                            <label for="beruf" class="right">Beruf</label>
+                        </div>
+                        <div class="small-7 columns">
+                            <input id="beruf" data-bind="textInput: beruf"><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-8 columns">
+                    <div class="row" data-bind="css: { warning: $parent.bindingErrors().indexOf('beruf')  != -1 }">
+                        <div class="small-5 columns">
+                            <label for="anzahlKinder" class="right">Anzahl Kinder</label>
+                        </div>
+                        <div class="small-7 columns">
+                            <input id="anzahlKinder" data-bind="textInput: anzahlKinder">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-8 columns">
+                    <div class="row" data-bind="css: { warning: $parent.bindingErrors().indexOf('beruf')  != -1 }">
+                        <div class="small-5 columns"
+                             data-bind="css: { warning: $parent.bindingErrors().indexOf('beruf') != -1 }">
+                            <label for="bruttoPA" class="right">Brutto Jahreseinkommen</label>
+                        </div>
+                        <div class="small-6 columns">
+                            <input id="bruttoPA"
+                                   data-bind="textInput: bruttoJahresEinkommen, enable: fieldBrutto">
+                        </div>
+                        <div class="small-1 columns">
+                            <a href="#" class="button tiny" data-bind="click: calculateBruttoNetto">Berechnen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-8 columns">
+                    <div class="row" data-bind="css: { warning: $parent.bindingErrors().indexOf('beruf')  != -1 }">
+                        <div class="small-5 columns">
+                            <label for="nettoPA" class="right">Netto Jahreseinkommen</label>
+                        </div>
+                        <div class="small-7 columns">
+                            <input id="nettoPA"
+                                   data-bind="textInput: nettoJahresEinkommen, enable: fieldNetto">
+                        </div>
+                        <div class="small-1 columns">
+                            <a href="#" class="button tiny" data-bind="click: calculateBruttoNetto">Berechnen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <div class="warning" data-bind="text: $parent.msg, visible: $parent.error"></div>
+            <div>
+                <button data-bind="click: $parent.flow().back">Zurück</button>
+                <button data-bind="click: $root.validate">Weiter</button>
+            </div>
+        </fieldset>
+    </form>
+</script>
+
+<!-- ${browser.bootstrap} -->
+<!-- body content here -->
+
+<script src="js/vendor/jquery.js"></script>
+<script src="js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+</script>
+</body>
+</html>
