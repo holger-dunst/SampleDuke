@@ -22,6 +22,7 @@
         <jersey.version>2.13</jersey.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <!--
     <pluginRepositories>
         <pluginRepository>
             <id>staged-releases</id>
@@ -34,7 +35,7 @@
             <url>https://maven.java.net/content/repositories/orgapidesign-1034/</url>
         </repository>
     </repositories>
-
+-->
 
     <dependencyManagement>
         <dependencies>
