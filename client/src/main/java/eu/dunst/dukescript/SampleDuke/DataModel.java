@@ -69,8 +69,6 @@ final class DataModel {
         ui.setCurrent(PAGE1);
         ui.setError(false);
         ui.setMsg("");
-        Models.toRaw(ui);
-        Router.registerBinding();
         //
         final Kunde kunde = new Kunde();
         kunde.setAnzahlKinder("2");
