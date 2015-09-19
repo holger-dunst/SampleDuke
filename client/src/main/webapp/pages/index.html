@@ -50,9 +50,11 @@
             </div>
             <div class="row">
                 <div class="small-8 columns">
-                    <div class="row" data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt2')  != -1 }">
+                    <div class="row">
                         <div class="small-4 columns">
-                            <label form="produktAuswahl" class="right">Produkt 2:</label>
+                            <label form="produktAuswahl" class="right"
+                                   data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt2')  != -1 }">Produkt
+                                2:</label>
                         </div>
                         <div class="small-8 columns">
                             <input id="produkt2Nein" title="produkt2 ausgewählt" type="radio" name="produkt2Group"
@@ -67,9 +69,11 @@
             </div>
             <div class="row">
                 <div class="small-8 columns">
-                    <div class="row" data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt3')  != -1 }">
+                    <div class="row">
                         <div class="small-4 columns">
-                            <label form="produktAuswahl" class="right">Produkt 3:</label>
+                            <label form="produktAuswahl" class="right"
+                                   data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt3')  != -1 }">Produkt
+                                3:</label>
                         </div>
                         <div class="small-8 columns">
                             <input id="produkt3Nein" title="produkt3 ausgewählt" type="radio" name="produkt3Group"

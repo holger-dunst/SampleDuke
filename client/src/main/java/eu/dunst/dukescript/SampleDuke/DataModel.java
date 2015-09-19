@@ -26,6 +26,7 @@ final class DataModel {
 
     @Function
     static void validate(Beratung beratung) {
+        System.out.println("ui = " + ui);
         boolean error = false;
         if (PAGE1.equals(beratung.getFlow().getPage())) {
             final List<String> validate = beratung.getProduktAuswahl().getValidate();
