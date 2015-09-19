@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/client/SampleDuke.iml" filepath="$PROJECT_DIR$/client/SampleDuke.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client-android/SampleDuke-android.iml" filepath="$PROJECT_DIR$/client-android/SampleDuke-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/js/SampleDuke-js.iml" filepath="$PROJECT_DIR$/js/SampleDuke-js.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SampleDuke-pom.iml" filepath="$PROJECT_DIR$/SampleDuke-pom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/client-web/SampleDuke-web.iml" filepath="$PROJECT_DIR$/client-web/SampleDuke-web.iml" />
+    </modules>
+  </component>
+</project>

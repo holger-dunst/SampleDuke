@@ -1,15 +1,12 @@
 package eu.dunst.dukescript.SampleDuke;
 
-import eu.dunst.dukescript.SampleDuke.js.Router;
 import net.java.html.json.Function;
 import net.java.html.json.Model;
-import net.java.html.json.Models;
 import net.java.html.json.Property;
 
-import java.math.BigDecimal;
 import java.util.List;
 
-import static eu.dunst.dukescript.SampleDuke.KundeModel.EingabeStatus.*;
+import static eu.dunst.dukescript.SampleDuke.KundeModel.EingabeStatus.BN;
 import static eu.dunst.dukescript.SampleDuke.ProductSelectionStatus.NO_SELECTION;
 import static eu.dunst.dukescript.SampleDuke.UIFlowModel.PAGE1;
 import static eu.dunst.dukescript.SampleDuke.UIFlowModel.PAGE2;
@@ -70,8 +67,8 @@ final class DataModel {
         ui.setCurrent(PAGE1);
         ui.setError(false);
         ui.setMsg("");
-       // Models.toRaw(ui);
-       //    Router.registerBinding();
+        // Models.toRaw(ui);
+        //    Router.registerBinding();
         //
         final Kunde kunde = new Kunde();
         kunde.setAnzahlKinder("2");
