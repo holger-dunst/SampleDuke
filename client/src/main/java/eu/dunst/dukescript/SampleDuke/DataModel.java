@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import static eu.dunst.dukescript.SampleDuke.KundeModel.EingabeStatus.*;
+import static eu.dunst.dukescript.SampleDuke.ProductSelectionStatus.NO_SELECTION;
 import static eu.dunst.dukescript.SampleDuke.UIFlowModel.PAGE1;
 import static eu.dunst.dukescript.SampleDuke.UIFlowModel.PAGE2;
 
@@ -69,6 +70,8 @@ final class DataModel {
         ui.setCurrent(PAGE1);
         ui.setError(false);
         ui.setMsg("");
+       // Models.toRaw(ui);
+       //    Router.registerBinding();
         //
         final Kunde kunde = new Kunde();
         kunde.setAnzahlKinder("2");
@@ -80,6 +83,9 @@ final class DataModel {
         //
         ui.setKunde(kunde);
         final ProduktAuswahl produktAuswahl = new ProduktAuswahl();
+        produktAuswahl.setProdukt1(NO_SELECTION);
+        produktAuswahl.setProdukt2(NO_SELECTION);
+        produktAuswahl.setProdukt3(NO_SELECTION);
         ui.setProduktAuswahl(produktAuswahl);
         ui.applyBindings();
     }

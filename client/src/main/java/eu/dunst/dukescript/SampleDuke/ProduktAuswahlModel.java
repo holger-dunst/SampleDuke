@@ -12,26 +12,28 @@ import net.java.html.json.Property;
 import java.util.ArrayList;
 import java.util.List;
 
+import static eu.dunst.dukescript.SampleDuke.ProductSelectionStatus.NO_SELECTION;
+
 /**
  * @author Holger
  */
 @Model(className = "ProduktAuswahl", targetId = "", properties = {
-        @Property(name = "produkt1", type = String.class),
-        @Property(name = "produkt2", type = String.class),
-        @Property(name = "produkt3", type = String.class)
+        @Property(name = "produkt1", type = ProductSelectionStatus.class),
+        @Property(name = "produkt2", type = ProductSelectionStatus.class),
+        @Property(name = "produkt3", type = ProductSelectionStatus.class)
 })
 class ProduktAuswahlModel {
 
     @ComputedProperty
-    static List<String> validate(String produkt1, String produkt2, String produkt3) {
+    static List<String> validate(ProductSelectionStatus produkt1, ProductSelectionStatus produkt2, ProductSelectionStatus produkt3) {
         final List<String> error = new ArrayList<>();
-        if (produkt1 == null) {
+        if (produkt1 == NO_SELECTION) {
             error.add("produkt1");
         }
-        if (produkt2 == null) {
+        if (produkt2 == NO_SELECTION) {
             error.add("produkt2");
         }
-        if (produkt3 == null) {
+        if (produkt3 == NO_SELECTION) {
             error.add("produkt3");
         }
         return error;
