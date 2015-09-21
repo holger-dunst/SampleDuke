@@ -2,6 +2,7 @@ package eu.dunst.dukescript.SampleDuke;
 
 import net.java.html.json.Function;
 import net.java.html.json.Model;
+import net.java.html.json.Models;
 import net.java.html.json.Property;
 
 import java.util.List;
@@ -68,10 +69,10 @@ final class DataModel {
         ui.setCurrent(PAGE1);
         ui.setError(false);
         ui.setMsg("");
-        // Models.toRaw(ui);
+        Models.toRaw(ui);
         //    Router.registerBinding();
         //
-        final Kunde kunde = new Kunde();
+        final Kunde kunde = ui.getKunde();
         kunde.setAnzahlKinder("2");
         kunde.setBeruf("Kellner");
         //kunde.setInputStatus(VALUE_CHANGE_WITHOUT_NOTIFICATION);
@@ -79,12 +80,10 @@ final class DataModel {
         kunde.setNettoJahresEinkommen("35000.00");
         kunde.setInputStatus(BN);
         //
-        ui.setKunde(kunde);
-        final ProduktAuswahl produktAuswahl = new ProduktAuswahl();
+        final ProduktAuswahl produktAuswahl = ui.getProduktAuswahl();
         produktAuswahl.setProdukt1(NO_SELECTION);
         produktAuswahl.setProdukt2(NO_SELECTION);
         produktAuswahl.setProdukt3(NO_SELECTION);
-        ui.setProduktAuswahl(produktAuswahl);
         ui.applyBindings();
     }
 }
