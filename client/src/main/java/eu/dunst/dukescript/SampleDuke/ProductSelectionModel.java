@@ -17,12 +17,12 @@ import static eu.dunst.dukescript.SampleDuke.ProductSelectionStatus.NO_SELECTION
 /**
  * @author Holger
  */
-@Model(className = "ProduktAuswahl", targetId = "", properties = {
+@Model(className = "ProductSelection", targetId = "", properties = {
         @Property(name = "produkt1", type = ProductSelectionStatus.class),
         @Property(name = "produkt2", type = ProductSelectionStatus.class),
         @Property(name = "produkt3", type = ProductSelectionStatus.class)
 })
-class ProduktAuswahlModel {
+class ProductSelectionModel {
 
     @ComputedProperty
     static List<String> validate(ProductSelectionStatus produkt1, ProductSelectionStatus produkt2, ProductSelectionStatus produkt3) {

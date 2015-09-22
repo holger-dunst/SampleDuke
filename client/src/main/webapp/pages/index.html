@@ -26,24 +26,24 @@
 <div data-bind="template: { name: flow().page}"></div>
 
 <script type="text/html" id="Page1">
-    <form id="produktAuswahl" data-bind="with: produktAuswahl">
+    <form id="productSelection" data-bind="with: productSelection">
         <fieldset>
-            <legend>Wählen Sie die Produkte</legend>
+            <legend>Choose a product</legend>
             <div class="row">
                 <div class="small-8 columns">
                     <div class="row">
                         <div class="small-4 columns">
                             <label class="right"
-                                   data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt1')  != -1 }">Produkt
+                                   data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt1')  != -1 }">Product
                                 1:</label>
                         </div>
                         <div class="small-8 columns">
-                            <input id="produkt1Nein" title="produkt1 ausgewählt" type="radio" name="produkt1Group"
+                            <input id="produkt1No" title="produkt1 ausgewählt" type="radio" name="produkt1Group"
                                    value="DESELECTED"
-                                   data-bind="checked: produkt1"/><label for="produkt1Nein">Nein</label>
-                            <input id="produkt1Ja" title="produkt1 abgewählt" type="radio" name="produkt1Group"
+                                   data-bind="checked: produkt1"/><label for="produkt1No">No</label>
+                            <input id="produkt1Yes" title="produkt1 abgewählt" type="radio" name="produkt1Group"
                                    value="SELECTED"
-                                   data-bind="checked: produkt1"/><label for="produkt1Ja">Ja</label>
+                                   data-bind="checked: produkt1"/><label for="produkt1Yes">Yes</label>
                         </div>
                     </div>
                 </div>
@@ -52,17 +52,17 @@
                 <div class="small-8 columns">
                     <div class="row">
                         <div class="small-4 columns">
-                            <label form="produktAuswahl" class="right"
-                                   data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt2')  != -1 }">Produkt
+                            <label form="productSelection" class="right"
+                                   data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt2')  != -1 }">Product
                                 2:</label>
                         </div>
                         <div class="small-8 columns">
-                            <input id="produkt2Nein" title="produkt2 ausgewählt" type="radio" name="produkt2Group"
+                            <input id="produkt2No" title="produkt2 ausgewählt" type="radio" name="produkt2Group"
                                    value="DESELECTED"
-                                   data-bind="checked: produkt2"/><label for="produkt2Nein">Nein</label>
-                            <input id="produkt2Ja" title="produkt2 abgewählt" type="radio" name="produkt2Group"
+                                   data-bind="checked: produkt2"/><label for="produkt2No">No</label>
+                            <input id="produkt2Yes" title="produkt2 abgewählt" type="radio" name="produkt2Group"
                                    value="SELECTED"
-                                   data-bind="checked: produkt2"/><label for="produkt2Ja">Ja</label>
+                                   data-bind="checked: produkt2"/><label for="produkt2Yes">Yes</label>
                         </div>
                     </div>
                 </div>
@@ -71,17 +71,17 @@
                 <div class="small-8 columns">
                     <div class="row">
                         <div class="small-4 columns">
-                            <label form="produktAuswahl" class="right"
-                                   data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt3')  != -1 }">Produkt
+                            <label form="productSelection" class="right"
+                                   data-bind="css: { warning: $parent.bindingErrors().indexOf('produkt3')  != -1 }">Product
                                 3:</label>
                         </div>
                         <div class="small-8 columns">
-                            <input id="produkt3Nein" title="produkt3 ausgewählt" type="radio" name="produkt3Group"
+                            <input id="produkt3No" title="produkt3 ausgewählt" type="radio" name="produkt3Group"
                                    value="DESELECTED"
-                                   data-bind="checked: produkt3"/><label for="produkt3Nein">Nein</label>
-                            <input id="produkt3Ja" title="produkt3 abgewählt" type="radio" name="produkt3Group"
+                                   data-bind="checked: produkt3"/><label for="produkt3No">No</label>
+                            <input id="produkt3Yes" title="produkt3 abgewählt" type="radio" name="produkt3Group"
                                    value="SELECTED"
-                                   data-bind="checked: produkt3"/><label for="produkt3Ja">Ja</label>
+                                   data-bind="checked: produkt3"/><label for="produkt3Yes">Yes</label>
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@
             <div data-bind="text: $parent.errorCode"></div>
             <div class="warning" data-bind="text: $parent.msg, visible: $parent.error"></div>
             <div class="small-2 columns">
-                <button data-bind="click: $root.validate">Weiter</button>
+                <button data-bind="click: $root.validate">Next</button>
             </div>
         </fieldset>
     </form>
@@ -100,15 +100,15 @@
 <script type="text/html" id="Page2">
     <form data-bind="with: customer">
         <fieldset>
-            <legend>Bitte ergänzen Sie folgende Angaben:</legend>
+            <legend>Complete the following data please:</legend>
             <div class="row">
                 <div class="small-8 columns">
-                    <div class="row" data-bind="css: { warning: $parent.bindingErrors().indexOf('beruf')  != -1 }">
+                    <div class="row" data-bind="css: { warning: $parent.bindingErrors().indexOf('job')  != -1 }">
                         <div class="small-5 columns">
-                            <label for="beruf" class="right">Beruf</label>
+                            <label for="job" class="right">Jobdescription</label>
                         </div>
                         <div class="small-7 columns">
-                            <input id="beruf" data-bind="textInput: beruf"><br>
+                            <input id="job" data-bind="textInput: job"><br>
                         </div>
                     </div>
                 </div>
@@ -116,12 +116,13 @@
 
             <div class="row">
                 <div class="small-8 columns">
-                    <div class="row" data-bind="css: { warning: $parent.bindingErrors().indexOf('beruf')  != -1 }">
+                    <div class="row"
+                         data-bind="css: { warning: $parent.bindingErrors().indexOf('numberOfChildren')  != -1 }">
                         <div class="small-5 columns">
-                            <label for="anzahlKinder" class="right">Anzahl Kinder</label>
+                            <label for="numberOfChildren" class="right">Number of children</label>
                         </div>
                         <div class="small-7 columns">
-                            <input id="anzahlKinder" data-bind="textInput: anzahlKinder">
+                            <input id="numberOfChildren" data-bind="textInput: anzahlKinder">
                         </div>
                     </div>
                 </div>
@@ -129,17 +130,18 @@
 
             <div class="row">
                 <div class="small-8 columns">
-                    <div class="row" data-bind="css: { warning: $parent.bindingErrors().indexOf('beruf')  != -1 }">
+                    <div class="row"
+                         data-bind="css: { warning: $parent.bindingErrors().indexOf('grossAnnualIncome')  != -1 }">
                         <div class="small-5 columns"
-                             data-bind="css: { warning: $parent.bindingErrors().indexOf('beruf') != -1 }">
-                            <label for="bruttoPA" class="right">Brutto Jahreseinkommen</label>
+                             data-bind="css: { warning: $parent.bindingErrors().indexOf('grossAnnualIncome') != -1 }">
+                            <label for="grossAnnualIncome" class="right">Gross annual income</label>
                         </div>
                         <div class="small-6 columns">
-                            <input id="bruttoPA"
-                                   data-bind="textInput: bruttoJahresEinkommen, enable: fieldBrutto">
+                            <input id="grossAnnualIncome"
+                                   data-bind="textInput: grossAnnualIncome, enable: fieldBrutto">
                         </div>
                         <div class="small-1 columns">
-                            <a href="#" class="button tiny" data-bind="click: calculateBruttoNetto">Berechnen</a>
+                            <a href="#" class="button tiny" data-bind="click: calculateBruttoNetto">Caculate</a>
                         </div>
                     </div>
                 </div>
@@ -147,16 +149,17 @@
 
             <div class="row">
                 <div class="small-8 columns">
-                    <div class="row" data-bind="css: { warning: $parent.bindingErrors().indexOf('beruf')  != -1 }">
+                    <div class="row"
+                         data-bind="css: { warning: $parent.bindingErrors().indexOf('netAnnualIncome')  != -1 }">
                         <div class="small-5 columns">
-                            <label for="nettoPA" class="right">Netto Jahreseinkommen</label>
+                            <label for="netAnnualIncome" class="right">Net annual income</label>
                         </div>
                         <div class="small-7 columns">
-                            <input id="nettoPA"
-                                   data-bind="textInput: nettoJahresEinkommen, enable: fieldNetto">
+                            <input id="netAnnualIncome"
+                                   data-bind="textInput: netAnnualIncome, enable: fieldNetto">
                         </div>
                         <div class="small-1 columns">
-                            <a href="#" class="button tiny" data-bind="click: calculateBruttoNetto">Berechnen</a>
+                            <a href="#" class="button tiny" data-bind="click: calculateBruttoNetto">Caculate</a>
                         </div>
                     </div>
                 </div>
@@ -165,8 +168,8 @@
 
             <div class="warning" data-bind="text: $parent.msg, visible: $parent.error"></div>
             <div>
-                <button data-bind="click: $parent.flow().back">Zurück</button>
-                <button data-bind="click: $root.validate">Weiter</button>
+                <button data-bind="click: $parent.flow().back">Back</button>
+                <button data-bind="click: $root.validate">Next</button>
             </div>
         </fieldset>
     </form>

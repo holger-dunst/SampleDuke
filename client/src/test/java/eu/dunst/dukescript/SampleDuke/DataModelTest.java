@@ -4,6 +4,6 @@ import org.testng.annotations.Test;
 
 public class DataModelTest {
     @Test public void testUIModelWithoutUI() {
-        Beratung model = new Beratung();
+        Session model = new Session();
     }
 }

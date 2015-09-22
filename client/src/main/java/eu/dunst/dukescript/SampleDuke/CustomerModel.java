@@ -11,44 +11,44 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-import static eu.dunst.dukescript.SampleDuke.KundeModel.EingabeStatus.*;
+import static eu.dunst.dukescript.SampleDuke.CustomerModel.EingabeStatus.*;
 
 
 @Model(className = "Customer", targetId = "", properties = {
-        @Property(name = "beruf", type = String.class),
+        @Property(name = "job", type = String.class),
         @Property(name = "anzahlKinder", type = String.class),
-        @Property(name = "bruttoJahresEinkommen", type = String.class),
-        @Property(name = "nettoJahresEinkommen", type = String.class),
+        @Property(name = "grossAnnualIncome", type = String.class),
+        @Property(name = "netAnnualIncome", type = String.class),
         @Property(name = "berechnet", type = boolean.class),
         @Property(name = "inputStatus", type = int.class),
         @Property(name = "fieldBrutto", type = boolean.class),
         @Property(name = "fieldNetto", type = boolean.class)
 })
-public class KundeModel {
+public class CustomerModel {
 
     @ComputedProperty
-    static List<String> validate(String beruf) {
+    static List<String> validate(String job) {
         final List<String> error = new ArrayList<>();
-        if (beruf != null && beruf.trim().isEmpty()) {
-            error.add("beruf");
+        if (job != null && job.trim().isEmpty()) {
+            error.add("job");
         }
-        if (beruf != null && beruf.trim().length() > 10) {
-            error.add("beruf");
+        if (job != null && job.trim().length() > 10) {
+            error.add("job");
         }
         return error;
     }
 
-    @OnPropertyChange("bruttoJahresEinkommen")
-    static void bruttoJahresEinkommenChange(Customer customer) {
+    @OnPropertyChange("grossAnnualIncome")
+    static void grossAnnualIncomeChange(Customer customer) {
         final int inputStatus = customer.getInputStatus();
-        final String bruttoJahresEinkommen = customer.getBruttoJahresEinkommen();
+        final String grossAnnualIncome = customer.getGrossAnnualIncome();
         if (BN == inputStatus) {
             customer.setInputStatus(VALUE_CHANGE_WITHOUT_NOTIFICATION);
-            customer.setNettoJahresEinkommen("");
+            customer.setNetAnnualIncome("");
             customer.setInputStatus(B);
         }
         if (B == inputStatus) {
-            if (bruttoJahresEinkommen.length() == 0) {
+            if (grossAnnualIncome.length() == 0) {
                 customer.setInputStatus(BN);
             }
         }
@@ -71,17 +71,17 @@ public class KundeModel {
         }
     }
 
-    @OnPropertyChange("nettoJahresEinkommen")
-    static void nettoJahresEinkommenChange(Customer customer) {
+    @OnPropertyChange("netAnnualIncome")
+    static void netAnnualIncomeChange(Customer customer) {
         final int inputStatus = customer.getInputStatus();
-        final String nettoJahresEinkommen = customer.getNettoJahresEinkommen();
+        final String netAnnualIncome = customer.getNetAnnualIncome();
         if (BN == inputStatus) {
             customer.setInputStatus(VALUE_CHANGE_WITHOUT_NOTIFICATION);
-            customer.setBruttoJahresEinkommen("");
+            customer.setGrossAnnualIncome("");
             customer.setInputStatus(N);
         }
         if (N == inputStatus) {
-            if (nettoJahresEinkommen.length() == 0) {
+            if (netAnnualIncome.length() == 0) {
                 customer.setInputStatus(BN);
             }
         }
@@ -90,18 +90,18 @@ public class KundeModel {
     @Function
     static void calculateBruttoNetto(Customer customer) {
         if (B == customer.getInputStatus()) {
-            final String bruttoJahresEinkommen = customer.getBruttoJahresEinkommen().trim();
-            if (bruttoJahresEinkommen.length() != 0) {
-                final BigDecimal brutto = new BigDecimal(bruttoJahresEinkommen);
-                customer.setNettoJahresEinkommen("" + brutto.multiply(BigDecimal.valueOf(0.42)));
+            final String grossAnnualIncome = customer.getGrossAnnualIncome().trim();
+            if (grossAnnualIncome.length() != 0) {
+                final BigDecimal brutto = new BigDecimal(grossAnnualIncome);
+                customer.setNetAnnualIncome("" + brutto.multiply(BigDecimal.valueOf(0.42)));
                 customer.setInputStatus(BN);
             }
         }
         if (N == customer.getInputStatus()) {
-            final String nettoJahresEinkommen = customer.getNettoJahresEinkommen().trim();
-            if (nettoJahresEinkommen.length() != 0) {
-                final BigDecimal brutto = new BigDecimal(nettoJahresEinkommen);
-                customer.setBruttoJahresEinkommen("" + brutto.multiply(BigDecimal.valueOf(0.42)));
+            final String netAnnualIncome = customer.getNetAnnualIncome().trim();
+            if (netAnnualIncome.length() != 0) {
+                final BigDecimal brutto = new BigDecimal(netAnnualIncome);
+                customer.setGrossAnnualIncome("" + brutto.multiply(BigDecimal.valueOf(0.42)));
                 customer.setInputStatus(BN);
             }
         }

@@ -7,14 +7,14 @@ import net.java.html.json.Property;
 
 import java.util.List;
 
-import static eu.dunst.dukescript.SampleDuke.KundeModel.EingabeStatus.BN;
+import static eu.dunst.dukescript.SampleDuke.CustomerModel.EingabeStatus.BN;
 import static eu.dunst.dukescript.SampleDuke.ProductSelectionStatus.NO_SELECTION;
 import static eu.dunst.dukescript.SampleDuke.UIFlowModel.PAGE1;
 import static eu.dunst.dukescript.SampleDuke.UIFlowModel.PAGE2;
 
-@Model(className = "Beratung", targetId = "", properties = {
+@Model(className = "Session", targetId = "", properties = {
         @Property(name = "customer", type = Customer.class),
-        @Property(name = "produktAuswahl", type = ProduktAuswahl.class),
+        @Property(name = "productSelection", type = ProductSelection.class),
         @Property(name = "flow", type = FlowModel.class),
         @Property(name = "error", type = boolean.class),
         @Property(name = "msg", type = String.class),
@@ -23,39 +23,39 @@ import static eu.dunst.dukescript.SampleDuke.UIFlowModel.PAGE2;
 })
 final class DataModel {
 
-    private static Beratung ui;
+    private static Session ui;
 
     @Function
-    static void validate(Beratung beratung) {
+    static void validate(Session session) {
         System.out.println("ui = " + ui);
         boolean error = false;
-        if (PAGE1.equals(beratung.getFlow().getPage())) {
-            final List<String> validate = beratung.getProduktAuswahl().getValidate();
-            error = checkValidation(beratung, validate);
+        if (PAGE1.equals(session.getFlow().getPage())) {
+            final List<String> validate = session.getProductSelection().getValidate();
+            error = checkValidation(session, validate);
         }
-        if (PAGE2.equals(beratung.getFlow().getPage())) {
-            final List<String> validate = beratung.getCustomer().getValidate();
-            error = checkValidation(beratung, validate);
+        if (PAGE2.equals(session.getFlow().getPage())) {
+            final List<String> validate = session.getCustomer().getValidate();
+            error = checkValidation(session, validate);
         }
-        System.out.printf("page: %s\n", beratung.getFlow().getPage());
+        System.out.printf("page: %s\n", session.getFlow().getPage());
         if (!error) {
-            beratung.getFlow().next();
+            session.getFlow().next();
         }
     }
 
-    private static boolean checkValidation(Beratung beratung, List<String> validate) {
+    private static boolean checkValidation(Session session, List<String> validate) {
         boolean error;
         if (!validate.isEmpty()) {
-            beratung.setMsg("Validation Error: Please check.");
-            beratung.getBindingErrors().clear();
-            beratung.getBindingErrors().addAll(validate);
-            beratung.setError(true);
+            session.setMsg("Validation Error: Please check.");
+            session.getBindingErrors().clear();
+            session.getBindingErrors().addAll(validate);
+            session.setError(true);
             error = true;
         } else {
-            beratung.setMsg("");
-            beratung.setError(false);
+            session.setMsg("");
+            session.setError(false);
             error = false;
-            beratung.getBindingErrors().clear();
+            session.getBindingErrors().clear();
         }
         return error;
     }
@@ -64,7 +64,7 @@ final class DataModel {
      * Called when the page is ready.
      */
     static void onPageLoad() throws Exception {
-        ui = new Beratung();
+        ui = new Session();
         ui.getFlow().setPage("Page1");
         ui.setCurrent(PAGE1);
         ui.setError(false);
@@ -74,16 +74,16 @@ final class DataModel {
         //
         final Customer customer = ui.getCustomer();
         customer.setAnzahlKinder("2");
-        customer.setBeruf("Kellner");
+        customer.setJob("Software Engineer");
         //customer.setInputStatus(VALUE_CHANGE_WITHOUT_NOTIFICATION);
-        customer.setBruttoJahresEinkommen("60000.00");
-        customer.setNettoJahresEinkommen("35000.00");
+        customer.setGrossAnnualIncome("60000.00");
+        customer.setNetAnnualIncome("35000.00");
         customer.setInputStatus(BN);
         //
-        final ProduktAuswahl produktAuswahl = ui.getProduktAuswahl();
-        produktAuswahl.setProdukt1(NO_SELECTION);
-        produktAuswahl.setProdukt2(NO_SELECTION);
-        produktAuswahl.setProdukt3(NO_SELECTION);
+        final ProductSelection productSelection = ui.getProductSelection();
+        productSelection.setProdukt1(NO_SELECTION);
+        productSelection.setProdukt2(NO_SELECTION);
+        productSelection.setProdukt3(NO_SELECTION);
         ui.applyBindings();
     }
 }
