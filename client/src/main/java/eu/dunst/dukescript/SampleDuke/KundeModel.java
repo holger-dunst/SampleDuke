@@ -14,7 +14,7 @@ import java.util.List;
 import static eu.dunst.dukescript.SampleDuke.KundeModel.EingabeStatus.*;
 
 
-@Model(className = "Kunde", targetId = "", properties = {
+@Model(className = "Customer", targetId = "", properties = {
         @Property(name = "beruf", type = String.class),
         @Property(name = "anzahlKinder", type = String.class),
         @Property(name = "bruttoJahresEinkommen", type = String.class),
@@ -39,70 +39,70 @@ public class KundeModel {
     }
 
     @OnPropertyChange("bruttoJahresEinkommen")
-    static void bruttoJahresEinkommenChange(Kunde kunde) {
-        final int inputStatus = kunde.getInputStatus();
-        final String bruttoJahresEinkommen = kunde.getBruttoJahresEinkommen();
+    static void bruttoJahresEinkommenChange(Customer customer) {
+        final int inputStatus = customer.getInputStatus();
+        final String bruttoJahresEinkommen = customer.getBruttoJahresEinkommen();
         if (BN == inputStatus) {
-            kunde.setInputStatus(VALUE_CHANGE_WITHOUT_NOTIFICATION);
-            kunde.setNettoJahresEinkommen("");
-            kunde.setInputStatus(B);
+            customer.setInputStatus(VALUE_CHANGE_WITHOUT_NOTIFICATION);
+            customer.setNettoJahresEinkommen("");
+            customer.setInputStatus(B);
         }
         if (B == inputStatus) {
             if (bruttoJahresEinkommen.length() == 0) {
-                kunde.setInputStatus(BN);
+                customer.setInputStatus(BN);
             }
         }
     }
 
     @OnPropertyChange("inputStatus")
-    static void inputstatus(Kunde kunde) {
-        int inputStatus = kunde.getInputStatus();
+    static void inputstatus(Customer customer) {
+        int inputStatus = customer.getInputStatus();
         if (inputStatus == 1) {
-            kunde.setFieldBrutto(true);
-            kunde.setFieldNetto(true);
+            customer.setFieldBrutto(true);
+            customer.setFieldNetto(true);
         }
         if (inputStatus == 2) {
-            kunde.setFieldBrutto(true);
-            kunde.setFieldNetto(false);
+            customer.setFieldBrutto(true);
+            customer.setFieldNetto(false);
         }
         if (inputStatus == 3) {
-            kunde.setFieldBrutto(false);
-            kunde.setFieldNetto(true);
+            customer.setFieldBrutto(false);
+            customer.setFieldNetto(true);
         }
     }
 
     @OnPropertyChange("nettoJahresEinkommen")
-    static void nettoJahresEinkommenChange(Kunde kunde) {
-        final int inputStatus = kunde.getInputStatus();
-        final String nettoJahresEinkommen = kunde.getNettoJahresEinkommen();
+    static void nettoJahresEinkommenChange(Customer customer) {
+        final int inputStatus = customer.getInputStatus();
+        final String nettoJahresEinkommen = customer.getNettoJahresEinkommen();
         if (BN == inputStatus) {
-            kunde.setInputStatus(VALUE_CHANGE_WITHOUT_NOTIFICATION);
-            kunde.setBruttoJahresEinkommen("");
-            kunde.setInputStatus(N);
+            customer.setInputStatus(VALUE_CHANGE_WITHOUT_NOTIFICATION);
+            customer.setBruttoJahresEinkommen("");
+            customer.setInputStatus(N);
         }
         if (N == inputStatus) {
             if (nettoJahresEinkommen.length() == 0) {
-                kunde.setInputStatus(BN);
+                customer.setInputStatus(BN);
             }
         }
     }
 
     @Function
-    static void calculateBruttoNetto(Kunde kunde) {
-        if (B == kunde.getInputStatus()) {
-            final String bruttoJahresEinkommen = kunde.getBruttoJahresEinkommen().trim();
+    static void calculateBruttoNetto(Customer customer) {
+        if (B == customer.getInputStatus()) {
+            final String bruttoJahresEinkommen = customer.getBruttoJahresEinkommen().trim();
             if (bruttoJahresEinkommen.length() != 0) {
                 final BigDecimal brutto = new BigDecimal(bruttoJahresEinkommen);
-                kunde.setNettoJahresEinkommen("" + brutto.multiply(BigDecimal.valueOf(0.42)));
-                kunde.setInputStatus(BN);
+                customer.setNettoJahresEinkommen("" + brutto.multiply(BigDecimal.valueOf(0.42)));
+                customer.setInputStatus(BN);
             }
         }
-        if (N == kunde.getInputStatus()) {
-            final String nettoJahresEinkommen = kunde.getNettoJahresEinkommen().trim();
+        if (N == customer.getInputStatus()) {
+            final String nettoJahresEinkommen = customer.getNettoJahresEinkommen().trim();
             if (nettoJahresEinkommen.length() != 0) {
                 final BigDecimal brutto = new BigDecimal(nettoJahresEinkommen);
-                kunde.setBruttoJahresEinkommen("" + brutto.multiply(BigDecimal.valueOf(0.42)));
-                kunde.setInputStatus(BN);
+                customer.setBruttoJahresEinkommen("" + brutto.multiply(BigDecimal.valueOf(0.42)));
+                customer.setInputStatus(BN);
             }
         }
     }

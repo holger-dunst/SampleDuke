@@ -10,13 +10,13 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="SampleDuke" />
-    <orderEntry type="library" name="Maven: org.netbeans.html:net.java.html:1.2.2" level="project" />
-    <orderEntry type="library" name="Maven: org.netbeans.html:net.java.html.json:1.2.2" level="project" />
-    <orderEntry type="library" name="Maven: org.netbeans.html:net.java.html.sound:1.2.2" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.netbeans.html:ko4j:1.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.netbeans.html:net.java.html:1.2.3" level="project" />
+    <orderEntry type="library" name="Maven: org.netbeans.html:net.java.html.json:1.2.3" level="project" />
+    <orderEntry type="library" name="Maven: org.netbeans.html:net.java.html.sound:1.2.3" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.netbeans.html:ko4j:1.2.3" level="project" />
     <orderEntry type="module" module-name="SampleDuke-js" />
     <orderEntry type="library" name="Maven: org.apidesign.bck2brwsr:emul:rt:0.15" level="project" />
-    <orderEntry type="library" name="Maven: org.netbeans.html:net.java.html.boot:1.2.2" level="project" />
+    <orderEntry type="library" name="Maven: org.netbeans.html:net.java.html.boot:1.2.3" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apidesign.bck2brwsr:emul:bck2brwsr:0.15" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.apidesign.bck2brwsr:ko-bck2brwsr:bck2brwsr:0.15" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.netbeans.html:net.java.html.geo:1.1" level="project" />

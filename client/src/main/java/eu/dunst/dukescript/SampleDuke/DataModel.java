@@ -13,7 +13,7 @@ import static eu.dunst.dukescript.SampleDuke.UIFlowModel.PAGE1;
 import static eu.dunst.dukescript.SampleDuke.UIFlowModel.PAGE2;
 
 @Model(className = "Beratung", targetId = "", properties = {
-        @Property(name = "kunde", type = Kunde.class),
+        @Property(name = "customer", type = Customer.class),
         @Property(name = "produktAuswahl", type = ProduktAuswahl.class),
         @Property(name = "flow", type = FlowModel.class),
         @Property(name = "error", type = boolean.class),
@@ -34,7 +34,7 @@ final class DataModel {
             error = checkValidation(beratung, validate);
         }
         if (PAGE2.equals(beratung.getFlow().getPage())) {
-            final List<String> validate = beratung.getKunde().getValidate();
+            final List<String> validate = beratung.getCustomer().getValidate();
             error = checkValidation(beratung, validate);
         }
         System.out.printf("page: %s\n", beratung.getFlow().getPage());
@@ -46,13 +46,13 @@ final class DataModel {
     private static boolean checkValidation(Beratung beratung, List<String> validate) {
         boolean error;
         if (!validate.isEmpty()) {
-            beratung.setMsg("Bitte überprüfen Sie Ihre Eingaben");
+            beratung.setMsg("Validation Error: Please check.");
             beratung.getBindingErrors().clear();
             beratung.getBindingErrors().addAll(validate);
             beratung.setError(true);
             error = true;
         } else {
-            beratung.setMsg("Kein Fehler");
+            beratung.setMsg("");
             beratung.setError(false);
             error = false;
             beratung.getBindingErrors().clear();
@@ -72,13 +72,13 @@ final class DataModel {
         Models.toRaw(ui);
         //    Router.registerBinding();
         //
-        final Kunde kunde = ui.getKunde();
-        kunde.setAnzahlKinder("2");
-        kunde.setBeruf("Kellner");
-        //kunde.setInputStatus(VALUE_CHANGE_WITHOUT_NOTIFICATION);
-        kunde.setBruttoJahresEinkommen("60000.00");
-        kunde.setNettoJahresEinkommen("35000.00");
-        kunde.setInputStatus(BN);
+        final Customer customer = ui.getCustomer();
+        customer.setAnzahlKinder("2");
+        customer.setBeruf("Kellner");
+        //customer.setInputStatus(VALUE_CHANGE_WITHOUT_NOTIFICATION);
+        customer.setBruttoJahresEinkommen("60000.00");
+        customer.setNettoJahresEinkommen("35000.00");
+        customer.setInputStatus(BN);
         //
         final ProduktAuswahl produktAuswahl = ui.getProduktAuswahl();
         produktAuswahl.setProdukt1(NO_SELECTION);
