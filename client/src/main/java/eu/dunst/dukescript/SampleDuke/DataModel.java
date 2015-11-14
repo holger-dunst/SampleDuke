@@ -37,7 +37,7 @@ final class DataModel {
             final List<String> validate = session.getCustomer().getValidate();
             error = checkValidation(session, validate);
         }
-        System.out.printf("page: %s\n", session.getFlow().getPage());
+//        System.out.printf("page: %s\n", session.getFlow().getPage());
         if (!error) {
             session.getFlow().next();
         }

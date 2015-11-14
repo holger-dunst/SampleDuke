@@ -18,27 +18,27 @@
         <processorPath useClasspath="true" />
       </profile>
       <profile default="false" name="Annotation profile for SampleDuke-android" enabled="true">
-        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
       </profile>
       <profile default="false" name="Annotation profile for SampleDuke-js" enabled="true">
-        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="SampleDuke-js" />
       </profile>
       <profile default="false" name="Annotation profile for SampleDuke" enabled="true">
-        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="SampleDuke" />
       </profile>
       <profile default="false" name="Annotation profile for SampleDuke-web" enabled="true">
-        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
